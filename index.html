@@ -123,6 +123,23 @@ footer em{font-style:italic;color:rgba(245,240,232,.5);}
   .project-item{grid-template-columns:48px 1fr;gap:20px;} .proj-arrow{display:none;}
 }
 </style>
+
+
+
+
+<!-- PWA START -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c0522a">
+
+<link rel="icon" href="icons/icon-192.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- PWA END -->
+
+
+
+
 </head>
 <body>
 <div class="cursor" id="cur"></div>
@@ -375,5 +392,17 @@ footer em{font-style:italic;color:rgba(245,240,232,.5);}
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+
+
+<!-- PWA SERVICE WORKER -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/Portfolio/service-worker.js')
+    .then(() => console.log("PWA Installed"))
+    .catch(err => console.log("SW error:", err));
+}
+</script>
+
+
 </body>
 </html>
